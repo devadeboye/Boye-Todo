@@ -1,5 +1,5 @@
 #!C:\Users\Adeboye Emmanuel\AppData\Local\Programs\Python\Python36-32\python.exe
-from todo import Todo
+from todo2 import Todo
 import tkinter as tk
 
 class TodoApp:
@@ -12,7 +12,7 @@ class TodoApp:
         self.root = tk.Tk()
 
         # title
-        self.root.title('To-do List')
+        self.root.title('3A Task-Manager')
         self.root.config(pady=2, padx=2, )
         
         # scrollbar
@@ -22,7 +22,7 @@ class TodoApp:
         
         # list box to contain the list
         self.my_list = tk.Listbox(self.root, selectmode = 'extended',\
-            yscrollcommand = self.scroll.set, width=540)
+            yscrollcommand = self.scroll.set, width=540, font=('courier', 11))#, 'bold'))
         
         # set the window dimension
         self.root.geometry('{}x{}'.format(540, 250))
@@ -65,7 +65,7 @@ class TodoApp:
 
         # Task list header
         tl_header = tk.Label(self.root, text='List of activities', 
-            font=("courier", 20))
+            font=("courier", 16))
         tl_header.pack()
 
         # update the list
@@ -95,8 +95,8 @@ class TodoApp:
         """
         for item in self.t_list.view_all():
             # insert item into the listbox
-            self.my_list.insert('end',item[1])
-        # pack the listbox in the main window
+            self.my_list.insert('end',' - '+item[1])
+        # pack the listbox in the main window])
         self.my_list.pack( side = 'left', fill = 'both')
         # set the config of the scrollbar
         self.scroll.config(command= self.my_list.yview)
@@ -106,14 +106,16 @@ class TodoApp:
         """
         remove completed task from list and db
         """
+        # get the string of the current selection using its
+        # listbox index
         x =self.my_list.get(self.my_list.curselection())
         # dictionary of db contents
         db = self.t_list.dict_db_content()
         # deletes the current selected item from the listbox
         self.my_list.delete('anchor')
         # remove the item from db using its id in the db
-        print(db[x])
-        self.t_list.remove_item(db[x])
+        print(db[(x[3:])])
+        self.t_list.remove_item(db[(x[3:])])
 
     def start(self):
         """
@@ -122,5 +124,6 @@ class TodoApp:
         self.root.mainloop()
 
 
-if __name__ == "__main__":
-    TodoApp().start()
+#if __name__ == "__main__":
+# start the app
+TodoApp().start()
