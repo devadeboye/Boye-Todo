@@ -5,8 +5,6 @@ CHANGE LOG
 """
 import sqlite3
 
-import psycopg2
-
 class Todo:
     def __init__(self):
         self.qty_completed = 0
