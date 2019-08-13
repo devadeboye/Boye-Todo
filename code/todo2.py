@@ -1,8 +1,3 @@
-"""
-CHANGE LOG
-
-- use sqlite3 in place of postgresSql
-"""
 import sqlite3
 
 class Todo:
