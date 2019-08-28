@@ -42,7 +42,7 @@ class TodoApp:
         self.label.grid(row=0, column=0)
 
         # create text box
-        self.user_input = tk.Entry(self.input_container, width=50)
+        self.user_input = tk.Entry(self.input_container, width=34)
         # arrange textbox in a grid
         self.user_input.grid(row=0, column=1)
         
