@@ -7,12 +7,13 @@ class TodoApp:
         """
         constructor for the app
         """
+        # create an instance of the todo class
         self.t_list = Todo()
         # main window
         self.root = tk.Tk()
 
         # title
-        self.root.title('3TM')
+        self.root.title('Puta')
         self.root.config(pady=2, padx=2, )
         
         # scrollbar

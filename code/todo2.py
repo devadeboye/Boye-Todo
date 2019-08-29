@@ -5,7 +5,7 @@ class Todo:
         self.qty_completed = 0
         self.qty_uncompleted = 0
         #create a db
-        self.db = sqlite3.connect('task.db')
+        self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
 
         # get a cursor object
         self.cur = self.db.cursor()
