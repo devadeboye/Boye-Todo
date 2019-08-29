@@ -1,19 +1,47 @@
 import sqlite3
+import os
+import getOs
 
 class Todo:
     def __init__(self):
         self.qty_completed = 0
         self.qty_uncompleted = 0
-        #create a db
-        self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
+        # check if directory exist
+        try:
+            if getOs.get_platform() == 'linux':
+                # create a db
+                self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
+            elif getOs.get_platform() == 'windows':
+                # create a db
+                self.db = sqlite3.connect('c:/Documents/puta/task.db')
 
-        # get a cursor object
-        self.cur = self.db.cursor()
+            # get a cursor object
+            self.cur = self.db.cursor()
 
-        # create a table if it doesn't exist
-        self.cur.execute(""" CREATE TABLE IF NOT EXISTS 
-        task(id INTEGER PRIMARY KEY, name TEXT )""")
-        self.db.commit()
+            # create a table if it doesn't exist
+            self.cur.execute(""" CREATE TABLE IF NOT EXISTS 
+            task(id INTEGER PRIMARY KEY, name TEXT )""")
+            self.db.commit()
+        except sqlite3.OperationalError:
+            # check for os type
+            if getOs.get_platform() == 'linux':
+                # create a directory
+                os.mkdir('/home/ea/Documents/puta/')
+                # create a db
+                self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
+            elif getOs.get_platform() == 'windows':
+                # create a directory
+                os.mkdir('/home/ea/Documents/puta/')
+                # create a db
+                self.db = sqlite3.connect('c:/Documents/puta/task.db')
+
+            # get a cursor object
+            self.cur = self.db.cursor()
+
+            # create a table if it doesn't exist
+            self.cur.execute(""" CREATE TABLE IF NOT EXISTS 
+            task(id INTEGER PRIMARY KEY, name TEXT )""")
+            self.db.commit()
 
 
     def insert_item(self, t):
@@ -26,8 +54,12 @@ class Todo:
 
         # try to connect to db
         try:
-            #create a db
-            self.db = sqlite3.connect('task.db')
+            if getOs.get_platform() == 'linux':
+                # create a db
+                self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
+            elif getOs.get_platform() == 'windows':
+                # create a db
+                self.db = sqlite3.connect('c:/Documents/puta/task.db')
 
             # get a cursor object
             self.cur = self.db.cursor()
@@ -65,8 +97,12 @@ class Todo:
         """
         # try to connect to db
         try:
-            #create a db
-            self.db = sqlite3.connect('task.db')
+            if getOs.get_platform() == 'linux':
+                # create a db
+                self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
+            elif getOs.get_platform() == 'windows':
+                # create a db
+                self.db = sqlite3.connect('c:/Documents/puta/task.db')
 
             # get a cursor object
             self.cur = self.db.cursor()
@@ -95,8 +131,12 @@ class Todo:
         """
         # try to connect to db
         try:
-            #create a db
-            self.db = sqlite3.connect('task.db')
+            if getOs.get_platform() == 'linux':
+                # create a db
+                self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
+            elif getOs.get_platform() == 'windows':
+                # create a db
+                self.db = sqlite3.connect('c:/Documents/puta/task.db')
 
             # get a cursor object
             self.cur = self.db.cursor()
@@ -122,8 +162,12 @@ class Todo:
         """Returns the element of the db"""
         # try to connect to db
         try:
-            #create a db
-            self.db = sqlite3.connect('task.db')
+            if getOs.get_platform() == 'linux':
+                # create a db
+                self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
+            elif getOs.get_platform() == 'windows':
+                # create a db
+                self.db = sqlite3.connect('c:/Documents/puta/task.db')
 
             # get a cursor object
             self.cur = self.db.cursor()
