@@ -4,16 +4,18 @@ import getOs
 
 class Todo:
     def __init__(self):
-        self.qty_completed = 0
-        self.qty_uncompleted = 0
+        #self.qty_completed = 0
+        #self.qty_uncompleted = 0
+        # get the name of the current logged in user
+        self.logged_in_user = os.getlogin()
         # check if directory exist
         try:
             if getOs.get_platform() == 'linux':
                 # create a db
                 self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
-            elif getOs.get_platform() == 'windows':
+            elif getOs.get_platform() == 'Windows':
                 # create a db
-                self.db = sqlite3.connect('c:/Documents/puta/task.db')
+                self.db = sqlite3.connect(f'C:/users/{self.logged_in_user}/.puta/task.db')
 
             # get a cursor object
             self.cur = self.db.cursor()
@@ -29,11 +31,12 @@ class Todo:
                 os.mkdir('/home/ea/Documents/puta/')
                 # create a db
                 self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
-            elif getOs.get_platform() == 'windows':
+            elif getOs.get_platform() == 'Windows':
                 # create a directory
-                os.mkdir('/home/ea/Documents/puta/')
+                os.mkdir(f'C:/users/{self.logged_in_user}/.puta')
+                #os.mkdir('C:/Program Files/puta/')
                 # create a db
-                self.db = sqlite3.connect('c:/Documents/puta/task.db')
+                self.db = sqlite3.connect(f'C:/users/{self.logged_in_user}/.puta/task.db')
 
             # get a cursor object
             self.cur = self.db.cursor()
@@ -57,9 +60,9 @@ class Todo:
             if getOs.get_platform() == 'linux':
                 # create a db
                 self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
-            elif getOs.get_platform() == 'windows':
+            elif getOs.get_platform() == 'Windows':
                 # create a db
-                self.db = sqlite3.connect('c:/Documents/puta/task.db')
+                self.db = sqlite3.connect(f'C:/users/{self.logged_in_user}/.puta/task.db')
 
             # get a cursor object
             self.cur = self.db.cursor()
@@ -100,10 +103,9 @@ class Todo:
             if getOs.get_platform() == 'linux':
                 # create a db
                 self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
-            elif getOs.get_platform() == 'windows':
+            elif getOs.get_platform() == 'Windows':
                 # create a db
-                self.db = sqlite3.connect('c:/Documents/puta/task.db')
-
+                self.db = sqlite3.connect(f'C:/users/{self.logged_in_user}/.puta/task.db')
             # get a cursor object
             self.cur = self.db.cursor()
 
@@ -134,9 +136,9 @@ class Todo:
             if getOs.get_platform() == 'linux':
                 # create a db
                 self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
-            elif getOs.get_platform() == 'windows':
+            elif getOs.get_platform() == 'Windows':
                 # create a db
-                self.db = sqlite3.connect('c:/Documents/puta/task.db')
+                self.db = sqlite3.connect(f'C:/users/{self.logged_in_user}/.puta/task.db')
 
             # get a cursor object
             self.cur = self.db.cursor()
@@ -165,9 +167,9 @@ class Todo:
             if getOs.get_platform() == 'linux':
                 # create a db
                 self.db = sqlite3.connect('/home/ea/Documents/puta/task.db')
-            elif getOs.get_platform() == 'windows':
+            elif getOs.get_platform() == 'Windows':
                 # create a db
-                self.db = sqlite3.connect('c:/Documents/puta/task.db')
+                self.db = sqlite3.connect(f'C:/users/{self.logged_in_user}/.puta/task.db')
 
             # get a cursor object
             self.cur = self.db.cursor()
