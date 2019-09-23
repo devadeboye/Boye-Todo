@@ -13,7 +13,7 @@ class TodoApp:
         self.root = tk.Tk()
 
         # title
-        self.root.title('Puta')
+        self.root.title('Boye Todo')
         self.root.config(pady=2, padx=2, )
         
         # scrollbar
